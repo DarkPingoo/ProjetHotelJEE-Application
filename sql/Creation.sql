@@ -54,7 +54,7 @@ CREATE TABLE RESERVATION(
  dateDebut DATE,
  dateFin DATE,
  nombrePlaces SMALLINT,
- booleenPaiementEffectue BOOLEAN,
+ booleenPaiementEffectue BOOLEAN DEFAULT NULL,
  PRIMARY KEY(idReservation),
  FOREIGN KEY(idChambre) REFERENCES CHAMBRE(idChambre) ON DELETE SET NULL,
  FOREIGN KEY(idClient) REFERENCES CLIENT(idClient) ON DELETE SET NULL
