@@ -17,7 +17,8 @@
 		class="d-inline-block align-top" alt=""> Hotel
 	</a> </nav>
 
+	</body>
 
-
-</body>
+	<script type="application/javascript" src="<c:url value="/js/bootstrap.js"/>"></script>
+	<script type="application/javascript" src="<c:url value="/js/jquery.js"/>"></script>
 </html>

@@ -37,7 +37,7 @@ CREATE TABLE CLIENT (
 --
 CREATE TABLE CHAMBRE (
  idChambre SMALLINT NOT NULL AUTO_INCREMENT,
- typeChambre VARCHAR(30),
+ typeChambre ENUM('Taudis', 'Suite Royale', 'Familiale', 'Affaire'),
  nombrePlaceLit SMALLINT,
  prixJournalier SMALLINT,
  etage TINYINT,
