@@ -26,9 +26,9 @@ SET FOREIGN_KEY_CHECKS=1;
 --
 CREATE TABLE CLIENT (
  idClient SMALLINT NOT NULL AUTO_INCREMENT,
- nom VARCHAR(20) unique,
+ nom VARCHAR(20),
  prenom VARCHAR(20),
- numTelephone SMALLINT,
+ numTelephone CHAR(10),
  PRIMARY KEY(idClient)
 );
 
@@ -40,7 +40,7 @@ CREATE TABLE CHAMBRE (
  typeChambre VARCHAR(30),
  nombrePlaceLit SMALLINT,
  prixJournalier SMALLINT,
- etage SMALLINT,
+ etage TINYINT,
  PRIMARY KEY(idChambre)
 );
 
