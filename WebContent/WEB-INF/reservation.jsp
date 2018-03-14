@@ -1,14 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Insert title here</title>
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
-	</head>
-	<body>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
+</head>
+<body>
+	<!-- Image and text -->
+	<nav class="navbar navbar-light bg-light"> <a
+		class="navbar-brand" href="#"> <img
+		src="/assets/brand/bootstrap-solid.svg" width="30" height="30"
+		class="d-inline-block align-top" alt=""> Hotel
+	</a> </nav>
 
-	</body>
+
+
+</body>
 </html>

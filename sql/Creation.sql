@@ -4,7 +4,7 @@
 SET FOREIGN_KEY_CHECKS=0;
 SET default_storage_engine=INNODB;
 SET character_set_client = utf8;
-
+	
 --
 -- Créer la base de donnée
 --
