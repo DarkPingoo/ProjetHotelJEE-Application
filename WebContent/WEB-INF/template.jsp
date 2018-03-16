@@ -11,11 +11,13 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>${ applicationScope.titre_page }</title>
+    <title>${ requestScope.titre_page }</title>
 
     <%-- Inclusion des librairies --%>
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS | FontAwesome |Style.css -->
     <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="/css/fontawesome-all.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
 </head>
 <body>
 
@@ -27,17 +29,19 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home</a>
+                    <li class="nav-item<c:if test="${requestScope.servletPath == '/accueil'}"> active</c:if>">
+                        <a class="nav-link" href="<c:url value="/accueil"/>">
+                            <i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp;Accueil
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                    <li class="nav-item<c:if test="${requestScope.servletPath == '/reservation'}"> active</c:if>">
+                        <a class="nav-link" href="<c:url value="/reservation"/>">
+                            <i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp;Effectuer une réservation
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
+                    <li class="nav-item<c:if test="${requestScope.servletPath == '/affichageReservation'}"> active</c:if>">
+                        <a class="nav-link" href="<c:url value="/affichageReservation"/>">
+                            <i class="fa fa-search fa-fw" aria-hidden="true"></i>&nbsp;Suivre une réservation</a>
                     </li>
                 </ul>
             </div>

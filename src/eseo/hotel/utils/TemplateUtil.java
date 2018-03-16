@@ -12,14 +12,17 @@ public class TemplateUtil {
      * @param request Request
      * @param response Response
      * @param pageName Nom de la page.jsp, localisée dans /WEB-INF/pages/
+     * @param titre Titre de la page <titre></titre>
      * @throws ServletException Exception
      * @throws IOException Exception
      */
-    public static void showPage(HttpServletRequest request, HttpServletResponse response, String pageName)
+    public static void showPage(HttpServletRequest request, HttpServletResponse response, String pageName, String titre)
             throws ServletException, IOException {
 
         //Définition de la page à inclure dans la variable
         request.setAttribute("page_to_include", pageName);
+        request.setAttribute("titre_page", titre);
+        request.setAttribute("servletPath", request.getServletPath());
         //Forward vers la page de template
         request.getRequestDispatcher("/WEB-INF/template.jsp").forward(request, response);
     }
