@@ -1,33 +1,38 @@
-package eseo.jee;
+package eseo.hotel.servlets;
 
-import java.io.IOException;
+import eseo.hotel.utils.TemplateUtil;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
- * Servlet implementation class reservation
+ * Servlet implementation class reservationServlet
  */
-@WebServlet("/reservation")
-public class reservation extends HttpServlet {
+@WebServlet("/test")
+public class testServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public reservation() {
+    public testServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		this.getServletContext().getRequestDispatcher("/WEB-INF/reservation.jsp").forward(request, response);
+		//Forward the request to jsp page
+		//Définir des variables
+		request.setAttribute("variableA", request.getParameter("var"));
+
+		//Forward vers la page de template
+		TemplateUtil.showPage(request, response, "test.jsp");
 	}
 
 }
