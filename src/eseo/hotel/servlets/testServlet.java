@@ -23,6 +23,7 @@ public class testServlet extends HttpServlet {
         super();
     }
 
+    //TODO - REMOVE
 	/**
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -32,7 +33,7 @@ public class testServlet extends HttpServlet {
 		request.setAttribute("variableA", request.getParameter("var"));
 
 		//Forward vers la page de template
-		TemplateUtil.showPage(request, response, "test.jsp");
+		TemplateUtil.showPage(request, response, "test.jsp", "TEST");
 	}
 
 }

@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>${ applicationScope.titre_page }</title>
+    <title>${ requestScope.titre_page }</title>
 
     <%-- Inclusion des librairies --%>
     <!-- Bootstrap CSS | FontAwesome |Style.css -->

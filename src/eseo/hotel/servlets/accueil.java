@@ -28,7 +28,7 @@ public class accueil extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Forward vers la page de template
-		TemplateUtil.showPage(request, response, "accueil.jsp");
+		TemplateUtil.showPage(request, response, "accueil.jsp", "HotelPremium");
 	}
 
 }
