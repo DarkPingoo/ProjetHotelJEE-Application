@@ -2,3 +2,8 @@ li.nav-item{
     margin-left: 10px;
     margin-right: 10px;
 }
+
+.nav-item.active > a{
+    color: #005cbf!important;
+}
+

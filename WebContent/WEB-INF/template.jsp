@@ -29,18 +29,18 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
+                    <li class="nav-item<c:if test="${requestScope.servletPath == '/accueil'}"> active</c:if>">
                         <a class="nav-link" href="<c:url value="/accueil"/>">
                             <i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp;Accueil
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
+                    <li class="nav-item<c:if test="${requestScope.servletPath == '/reservation'}"> active</c:if>">
+                        <a class="nav-link" href="<c:url value="/reservation"/>">
                             <i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp;Effectuer une réservation
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
+                    <li class="nav-item<c:if test="${requestScope.servletPath == '/affichageReservation'}"> active</c:if>">
+                        <a class="nav-link" href="<c:url value="/affichageReservation"/>">
                             <i class="fa fa-search fa-fw" aria-hidden="true"></i>&nbsp;Suivre une réservation</a>
                     </li>
                 </ul>

@@ -20,6 +20,7 @@ public class TemplateUtil {
 
         //Définition de la page à inclure dans la variable
         request.setAttribute("page_to_include", pageName);
+        request.setAttribute("servletPath", request.getServletPath());
         //Forward vers la page de template
         request.getRequestDispatcher("/WEB-INF/template.jsp").forward(request, response);
     }
