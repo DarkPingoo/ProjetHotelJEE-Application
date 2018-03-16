@@ -1,6 +1,10 @@
 /*TRUNCATE TABLE CLIENT;*/
 /*TRUNCATE TABLE CHAMBRE;*/
 /*TRUNCATE TABLE RESERVATION;*/
+--
+-- Utilisation de la base de données Hotel
+--
+USE Hotel;
 
 /* REMPLISSAGE DE LA TABLE CLIENT */
 INSERT INTO CLIENT(nom,prenom,numTelephone) VALUES('Merand','Celine','0615275045');
