@@ -39,7 +39,11 @@ public class reservation extends HttpServlet {
 				chambreList.add("Taudis");
 				
 				request.setAttribute("chambreList", chambreList);
+<<<<<<< HEAD
+				TemplateUtil.showPage(request, response, "reservation.jsp", "Réserver une chambre");
+=======
 				TemplateUtil.showPage(request, response, "reservation.jsp", "Reservation");
+>>>>>>> master
 	}
 
 	/**
@@ -54,10 +58,7 @@ public class reservation extends HttpServlet {
 				String arrivee = request.getParameter("dateArrivee");
 				String depart = request.getParameter("dateDepart");
 				String chambre = request.getParameter("chambre");
-				PrintWriter out = response.getWriter();
 				
-				out.print("Bonjour " + sexe + " " + prenom + " " + nom + " " + telephone + " " + arrivee + " " + depart + " " + chambre);
-			
 	}
 	
 }
