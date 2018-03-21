@@ -39,9 +39,9 @@
                             <i class="fa fa-star fa-fw" aria-hidden="true"></i>&nbsp;Effectuer une réservation
                         </a>
                     </li>
-                    <li class="nav-item<c:if test="${requestScope.servletPath == '/annulerReservation'}"> active</c:if>">
-                        <a class="nav-link" href="<c:url value="/annulerReservation"/>">
-                            <i class="fa fa-times fa-fw" aria-hidden="true"></i>&nbsp;Annuler une réservation</a>
+                    <li class="nav-item<c:if test="${requestScope.servletPath == '/gererReservation'}"> active</c:if>">
+                        <a class="nav-link" href="<c:url value="/gererReservation"/>">
+                            <i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp;Gérer une réservation</a>
                     </li>
                 </ul>
             </div>
@@ -58,6 +58,9 @@
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
+                <stong>
+                    <i class="fa fa-${ requestScope.callbackIcon } fa-fw text-${ requestScope.callbackType }" aria-hidden="true"></i>&nbsp;
+                </stong>
                 ${ requestScope.callbackMessage }
             </div>
         </div>

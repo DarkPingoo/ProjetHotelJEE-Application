@@ -12,14 +12,14 @@ import java.io.IOException;
 /**
  * Servlet implementation class reservationServlet
  */
-@WebServlet("/annulerReservation")
-public class annulerReservation extends HttpServlet {
+@WebServlet("/etatReservation")
+public class etatReservation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public annulerReservation() {
+	public etatReservation() {
 		super();
 	}
 
@@ -38,22 +38,28 @@ public class annulerReservation extends HttpServlet {
 		String idReservation 	= request.getParameter("idReservation");
 
 
-		//TODO : APPEL DU WEBSERVICE - Annulation reservation
-		boolean result = false;
+		//TODO : APPEL DU WEBSERVICE - payerChambre reservation
+		boolean exists  = (idReservation.contains("1234")),
+                payee   = (idReservation.contains("5")); //TEST
 		//estionHotelsSEI service = new GestionHotelsService().getGestionHotelsPort();
 		//boolean resultat = true;//service.annulerChambre(Integer.parseInt(idReservation));
 
 		String callbackType 	= null;
 		String callbackMessage 	= null;
-		if(result) {
-			callbackType 	= "success";
-			callbackMessage = "La réservation n°" + idReservation + " a bien été annulée !";
+		if(exists) {
+		    if(payee) {
+                callbackType 	= "success";
+                callbackMessage = "La réservation n°" + idReservation + " est déjà réglée, tout est bon !";
+            } else {
+                callbackType 	= "warning";
+                callbackMessage = "La réservation n°" + idReservation + " n'est pas encore payée, pensez-y !";
+            }
 		} else {
 			callbackType 	= "danger";
 			callbackMessage = "La réservation n°" + idReservation + " n'existe pas !";
 		}
 
 		TemplateUtil.setCallback(request, response, callbackType, callbackMessage);
-		doGet(request,response);
+		doGet(request, response);
 	}
 }

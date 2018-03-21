@@ -7,8 +7,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="text-center">
+
+    <%-- Formulaire d'etat de paiement --%>
     <div class="row">
-        <%-- Formulaire de recherche --%>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <i class="fa fa-credit-card fa-fw text-warning" aria-hidden="true"></i>&nbsp;
+                    <b>Vérifier l'état de paiement</b>
+
+                </div>
+                <div class="box-body text-justify" style="padding: 15px;">
+                    Bienvenue sur le module de vérification du paiement d'une réservation.
+                    Afin de vérifier l'état votre réservation, merci d'entrer son numéro ci-dessous.
+
+                    <form method="POST" action="<c:url value="/etatReservation"/>">
+                        <div class="input-group" style="margin-top: 20px">
+                            <input type="text" class="form-control" id="idReservation_paiement" name="idReservation"
+                                   placeholder="Identifiant réservation" required="" pattern="\d*">
+                            <div class="input-group-append">
+                                <button class="btn btn-warning" type="submit">
+                                    <i class="fa fa-check fa-fw" aria-hidden="true"></i>&nbsp;
+                                    Vérifier la réservation
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+
+
+    <%-- Formulaire d'annulation de chambre --%>
+    <div class="row" style="margin-top: 30px">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
             <div class="box box-danger">
@@ -43,4 +78,6 @@
         </div>
         <div class="col-sm-1"></div>
     </div>
+
+
 </div>

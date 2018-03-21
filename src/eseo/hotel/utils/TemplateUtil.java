@@ -26,4 +26,17 @@ public class TemplateUtil {
         //Forward vers la page de template
         request.getRequestDispatcher("/WEB-INF/template.jsp").forward(request, response);
     }
+
+    public static void setCallback(HttpServletRequest request, HttpServletResponse response, String type, String message) {
+        //Mise en forme du message
+        String icon = type.equalsIgnoreCase("success") ? "check" :
+                        type.equalsIgnoreCase("danger") ? "times" :
+                        type.equalsIgnoreCase("warning") ? "exclamation-triangle" : "info-circle";
+
+
+        //Définition du callback
+        request.setAttribute("callbackType", type);
+        request.setAttribute("callbackIcon", icon);
+        request.setAttribute("callbackMessage", message);
+    }
 }
