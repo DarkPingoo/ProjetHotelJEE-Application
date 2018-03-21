@@ -9,7 +9,7 @@
 <div class="text-center">
     <div class="row">
         <%-- Formulaire de recherche --%>
-        <div class="col-sm-1">&nbsp;</div>
+        <div class="col-sm-1"></div>
         <div class="col-sm-10">
             <div class="box box-danger">
                 <div class="box-header with-border">
@@ -25,7 +25,7 @@
                     correspondant à <strong class="text-danger">5% du prix total</strong> sera retenue.
                     ¯\_(ツ)_/¯
 
-                    <form type="POST" action="<c:url value="/annulerReservation"/>">
+                    <form method="POST" action="<c:url value="/annulerReservation"/>">
                         <div class="input-group" style="margin-top: 20px">
                             <input type="text" class="form-control" id="idReservation" name="idReservation"
                                    placeholder="Identifiant réservation" required="" pattern="\d*">
@@ -41,6 +41,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-1">&nbsp;</div>
+        <div class="col-sm-1"></div>
     </div>
 </div>

@@ -37,16 +37,25 @@ public class annulerReservation extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Requête d'annulation de réservation
-		String idReservation = request.getParameter("id");
+		String idReservation 	= request.getParameter("idReservation");
+		String callbackType 	= null;
+		String callbackMessage 	= null;
 
 		//TODO : APPEL DU WEBSERVICE - Annulation reservation
 		boolean result = false;
 		//estionHotelsSEI service = new GestionHotelsService().getGestionHotelsPort();
 		//boolean resultat = true;//service.annulerChambre(Integer.parseInt(idReservation));
 
+		if(result) {
+			callbackType 	= "success";
+			callbackMessage = "La réservation n°" + idReservation + " a bien été annulée !";
+		} else {
+			callbackType 	= "danger";
+			callbackMessage = "La réservation n°" + idReservation + " n'existe pas !";
+		}
 		//Renvoi du résultat
-		request.setAttribute("callbackType", result ? "success" : "");
-		request.setAttribute("callbackMessage", "success");
+		request.setAttribute("callbackType", callbackType);
+		request.setAttribute("callbackMessage", callbackMessage);
 
 		doGet(request, response);
 	}

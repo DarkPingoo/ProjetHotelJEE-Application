@@ -49,10 +49,11 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" style="margin: 20px;">
     <%-- Callback : message de retour --%>
     <c:if test="${ not empty requestScope.callbackMessage }">
-        <div class="col-sm-12" style="margin-top: 20px">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
             <div class="alert alert-${ requestScope.callbackType } alert-dismissible fade show" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -60,10 +61,11 @@
                 ${ requestScope.callbackMessage }
             </div>
         </div>
+        <div class="col-sm-1"></div>
     </c:if>
 
     <%-- Contenu de la page --%>
-    <div class="col-sm-12" style="margin: 20px;">
+    <div class="col-sm-12" style="margin-top: 20px;">
         <jsp:include page="/WEB-INF/pages/${ requestScope.page_to_include}" />
     </div>
 
@@ -72,8 +74,8 @@
 
 <%-- Inclusion des scripts --%>
 <!-- Bootstrap & JQuery -->
-<script type="application/javascript" src="<c:url value="/js/bootstrap.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/js/jquery.js"/>"></script>
+<script type="application/javascript" src="<c:url value="/js/bootstrap.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/js/script.js"/>"></script>
 </body>
 </html>
