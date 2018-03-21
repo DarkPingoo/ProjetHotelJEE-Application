@@ -8,18 +8,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-  <div class="row justify-content-center">
-    <div class="col-5">
+  <div class="row justify-content-center ">
+  
+    <div class="col-5 reservation bg-dark">
+    <h2 class = "text-center">Formulaire de réservation</h2><br>
+    
 <form method="get" action="reservation">
 	<input type="radio" name="sexe" value="Madame" /> Madame 
 	<input type="radio"	name="sexe" value="Monsieur" /> Monsieur <br> <br>
 	
 		<label>Enter votre nom </label><br>
-		<input type="text" name="nom" /><br>
+		<input type="text" name="nom" placeholder="Nom" class="form-control"/><br>
 		<label>Enter votre prénom </label><br>
-		<input type="text" name="prenom" /><br>
+		<input type="text" name="prenom" placeholder="Prénom" class="form-control"/><br>
 		<label>Enter votre numéro de téléphone </label><br>
-		<input type="text" name="telephone" /><br>
+		<div class="input-group mb-2 mr-sm-2">
+    <div class="input-group-prepend">
+      <div class="input-group-text"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></div>
+    </div>
+    <input type="text" name="telephone" placeholder="Numéro de téléphone" class="form-control"/><br>
+  </div><br>
+		
 	
 	Du <input type="date" name="dateArrivee" /> 
 	au <input type="date" name="dateDepart" /><br><br>
@@ -31,7 +40,9 @@
 		</c:forEach>
 	</select>
 	<br><br>
-	<button type="submit" name = "Envoyer" class="btn btn-primary">Envoyer</button>
+	<div class = "col-sm-12 text-right">
+	<button type="submit" name = "Envoyer" class="btn btn-light">Envoyer</button>
+	</div>
 	</form>
 	</div>
 	</div>
