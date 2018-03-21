@@ -6,3 +6,6 @@
 --%>
 
 Ceci est un contenu de test : ${ requestScope.variableA }
+<br />
+<br />
+Page : ${ requestScope.path}
