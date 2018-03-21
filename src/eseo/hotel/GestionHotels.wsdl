@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="GestionHotelsService" targetNamespace="http://sw.eseo/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://sw.eseo/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://sw.eseo/" targetNamespace="http://sw.eseo/" version="1.0">
+<xs:element name="annulerChambre" type="tns:annulerChambre"/>
+<xs:element name="annulerChambreResponse" type="tns:annulerChambreResponse"/>
+<xs:element name="payerChambre" type="tns:payerChambre"/>
+<xs:element name="payerChambreResponse" type="tns:payerChambreResponse"/>
+<xs:element name="reserverChambre" type="tns:reserverChambre"/>
+<xs:element name="reserverChambreResponse" type="tns:reserverChambreResponse"/>
+<xs:element name="trouverChambre" type="tns:trouverChambre"/>
+<xs:element name="trouverChambreResponse" type="tns:trouverChambreResponse"/>
+<xs:complexType name="payerChambre">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="payerChambreResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="annulerChambre">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="annulerChambreResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="reserverChambre">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="tns:reservationChambre"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="reservationChambre">
+<xs:sequence>
+<xs:element minOccurs="0" name="dateDebut" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="dateFin" type="xs:dateTime"/>
+<xs:element name="idChambre" type="xs:int"/>
+<xs:element name="idClient" type="xs:int"/>
+<xs:element name="idReservation" type="xs:int"/>
+<xs:element name="nbPlaces" type="xs:int"/>
+<xs:element name="paiementEffectue" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="reserverChambreResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="trouverChambre">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="tns:chambre"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="chambre">
+<xs:sequence>
+<xs:element name="idChambre" type="xs:int"/>
+<xs:element name="nbLits" type="xs:int"/>
+<xs:element name="prix" type="xs:int"/>
+<xs:element minOccurs="0" name="typeChambre" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="trouverChambreResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:chambre"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="annulerChambre">
+    <wsdl:part name="parameters" element="tns:annulerChambre">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="payerChambreResponse">
+    <wsdl:part name="parameters" element="tns:payerChambreResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="reserverChambre">
+    <wsdl:part name="parameters" element="tns:reserverChambre">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="trouverChambre">
+    <wsdl:part name="parameters" element="tns:trouverChambre">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="reserverChambreResponse">
+    <wsdl:part name="parameters" element="tns:reserverChambreResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="trouverChambreResponse">
+    <wsdl:part name="parameters" element="tns:trouverChambreResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="payerChambre">
+    <wsdl:part name="parameters" element="tns:payerChambre">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="annulerChambreResponse">
+    <wsdl:part name="parameters" element="tns:annulerChambreResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="GestionHotelsSEI">
+    <wsdl:operation name="payerChambre">
+      <wsdl:input name="payerChambre" message="tns:payerChambre">
+    </wsdl:input>
+      <wsdl:output name="payerChambreResponse" message="tns:payerChambreResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="annulerChambre">
+      <wsdl:input name="annulerChambre" message="tns:annulerChambre">
+    </wsdl:input>
+      <wsdl:output name="annulerChambreResponse" message="tns:annulerChambreResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reserverChambre">
+      <wsdl:input name="reserverChambre" message="tns:reserverChambre">
+    </wsdl:input>
+      <wsdl:output name="reserverChambreResponse" message="tns:reserverChambreResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="trouverChambre">
+      <wsdl:input name="trouverChambre" message="tns:trouverChambre">
+    </wsdl:input>
+      <wsdl:output name="trouverChambreResponse" message="tns:trouverChambreResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GestionHotelsServiceSoapBinding" type="tns:GestionHotelsSEI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="payerChambre">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="payerChambre">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="payerChambreResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="annulerChambre">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="annulerChambre">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="annulerChambreResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reserverChambre">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="reserverChambre">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="reserverChambreResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="trouverChambre">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="trouverChambre">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="trouverChambreResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GestionHotelsService">
+    <wsdl:port name="GestionHotelsPort" binding="tns:GestionHotelsServiceSoapBinding">
+      <soap:address location="http://localhost:9090/GestionHotelsPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
