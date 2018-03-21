@@ -39,11 +39,7 @@ public class reservation extends HttpServlet {
 				chambreList.add("Taudis");
 				
 				request.setAttribute("chambreList", chambreList);
-<<<<<<< HEAD
 				TemplateUtil.showPage(request, response, "reservation.jsp", "Réserver une chambre");
-=======
-				TemplateUtil.showPage(request, response, "reservation.jsp", "Reservation");
->>>>>>> master
 	}
 
 	/**
