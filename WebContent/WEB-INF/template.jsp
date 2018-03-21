@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>${ requestScope.titre_page }</title>
+    <title><c:out value="${requestScope.titre_page}" /></title>
 
     <%-- Inclusion des librairies --%>
     <!-- Bootstrap CSS | FontAwesome |Style.css -->
@@ -24,8 +24,8 @@
 <div class="row">
     <%-- Navbar : Liste des pages accessibles --%>
     <div class="col-sm-12">
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
-            <a class="navbar-brand">HotelPremium</a>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <a class="navbar-brand text-warning">HotelPremium</a>
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
@@ -39,9 +39,9 @@
                             <i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp;Effectuer une réservation
                         </a>
                     </li>
-                    <li class="nav-item<c:if test="${requestScope.servletPath == '/affichageReservation'}"> active</c:if>">
-                        <a class="nav-link" href="<c:url value="/affichageReservation"/>">
-                            <i class="fa fa-search fa-fw" aria-hidden="true"></i>&nbsp;Suivre une réservation</a>
+                    <li class="nav-item<c:if test="${requestScope.servletPath == '/annulerReservation'}"> active</c:if>">
+                        <a class="nav-link" href="<c:url value="/annulerReservation"/>">
+                            <i class="fa fa-times fa-fw" aria-hidden="true"></i>&nbsp;Annuler une réservation</a>
                     </li>
                 </ul>
             </div>
@@ -50,6 +50,18 @@
 </div>
 
 <div class="row">
+    <%-- Callback : message de retour --%>
+    <c:if test="${ not empty requestScope.callbackMessage }">
+        <div class="col-sm-12" style="margin-top: 20px">
+            <div class="alert alert-${ requestScope.callbackType } alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                ${ requestScope.callbackMessage }
+            </div>
+        </div>
+    </c:if>
+
     <%-- Contenu de la page --%>
     <div class="col-sm-12" style="margin: 20px;">
         <jsp:include page="/WEB-INF/pages/${ requestScope.page_to_include}" />
@@ -62,5 +74,6 @@
 <!-- Bootstrap & JQuery -->
 <script type="application/javascript" src="<c:url value="/js/bootstrap.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/js/jquery.js"/>"></script>
+<script type="application/javascript" src="<c:url value="/js/script.js"/>"></script>
 </body>
 </html>
