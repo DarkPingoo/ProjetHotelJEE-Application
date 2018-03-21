@@ -40,11 +40,14 @@ public class annulerReservation extends HttpServlet {
 		String idReservation = request.getParameter("id");
 
 		//TODO : APPEL DU WEBSERVICE - Annulation reservation
+		boolean result = false;
 		//estionHotelsSEI service = new GestionHotelsService().getGestionHotelsPort();
 		//boolean resultat = true;//service.annulerChambre(Integer.parseInt(idReservation));
 
 		//Renvoi du résultat
-		request.setAttribute("callbackType", "success");
+		request.setAttribute("callbackType", result ? "success" : "");
 		request.setAttribute("callbackMessage", "success");
+
+		doGet(request, response);
 	}
 }

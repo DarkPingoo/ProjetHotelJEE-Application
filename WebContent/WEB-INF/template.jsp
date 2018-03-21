@@ -36,7 +36,7 @@
                     </li>
                     <li class="nav-item<c:if test="${requestScope.servletPath == '/reservation'}"> active</c:if>">
                         <a class="nav-link" href="<c:url value="/reservation"/>">
-                            <i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp;Effectuer une réservation
+                            <i class="fa fa-star fa-fw" aria-hidden="true"></i>&nbsp;Effectuer une réservation
                         </a>
                     </li>
                     <li class="nav-item<c:if test="${requestScope.servletPath == '/annulerReservation'}"> active</c:if>">
