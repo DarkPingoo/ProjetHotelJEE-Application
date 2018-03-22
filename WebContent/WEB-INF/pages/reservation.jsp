@@ -13,7 +13,7 @@
     <div class="col-5 reservation bg-dark">
     <h2 class = "text-center">Formulaire de réservation</h2><br>
     
-<form method="get" action="reservation">
+<form method="post" action="reservation">
 	<input type="radio" name="sexe" value="Madame" /> Madame 
 	<input type="radio"	name="sexe" value="Monsieur" /> Monsieur <br> <br>
 	
