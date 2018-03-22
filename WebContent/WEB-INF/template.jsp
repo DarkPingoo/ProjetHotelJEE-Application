@@ -25,7 +25,7 @@
     <%-- Navbar : Liste des pages accessibles --%>
     <div class="col-sm-12">
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-            <a class="navbar-brand text-warning">HotelPremium</a>
+            <a class="navbar-brand text-warning">HôtelPremium</a>
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
