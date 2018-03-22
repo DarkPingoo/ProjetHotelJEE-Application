@@ -51,9 +51,21 @@ public class etatReservation extends HttpServlet {
 		if(idReservation != null) {
 			//APPEL DU WEBSERVICE - PayerReservation
 			GestionHotelsSEI service    = new GestionHotelsService().getGestionHotelsPort();
+			boolean erreur              = service.payerChambre(idReservation).equalsIgnoreCase("erreur");
+            boolean dejaPayee           = service.payerChambre(idReservation).equalsIgnoreCase("oui");
 
-			callbackType 	= "info";
-			callbackMessage = service.payerChambre(idReservation);
+            if(!erreur) {
+                if(dejaPayee) {
+                    callbackType 	= "info";
+                    callbackMessage = "La réservation n°" + idReservation + " est déjà réglée, tout est bon !";
+                } else {
+                    callbackType 	= "success";
+                    callbackMessage = "Votre paiement pour la réservation n°" + idReservation + " a bien été accepté !";
+                }
+            } else {
+                callbackType 	= "danger";
+                callbackMessage = "La réservation n°" + idReservation + " n'existe pas !";
+            }
 		} else {
 			callbackType 	= "danger";
 			callbackMessage = "Le numéro de réservation est invalide !";

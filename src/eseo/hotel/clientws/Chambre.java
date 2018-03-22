@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>Classe Java pour chambre complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="chambre">
@@ -46,7 +46,7 @@ public class Chambre {
     protected String typeChambre;
 
     /**
-     * Obtient la valeur de la propriété etage.
+     * Obtient la valeur de la propriÃ©tÃ© etage.
      * 
      */
     public int getEtage() {
@@ -54,7 +54,7 @@ public class Chambre {
     }
 
     /**
-     * Définit la valeur de la propriété etage.
+     * DÃ©finit la valeur de la propriÃ©tÃ© etage.
      * 
      */
     public void setEtage(int value) {
@@ -62,7 +62,7 @@ public class Chambre {
     }
 
     /**
-     * Obtient la valeur de la propriété idChambre.
+     * Obtient la valeur de la propriÃ©tÃ© idChambre.
      * 
      */
     public int getIdChambre() {
@@ -70,7 +70,7 @@ public class Chambre {
     }
 
     /**
-     * Définit la valeur de la propriété idChambre.
+     * DÃ©finit la valeur de la propriÃ©tÃ© idChambre.
      * 
      */
     public void setIdChambre(int value) {
@@ -78,7 +78,7 @@ public class Chambre {
     }
 
     /**
-     * Obtient la valeur de la propriété nbLits.
+     * Obtient la valeur de la propriÃ©tÃ© nbLits.
      * 
      */
     public int getNbLits() {
@@ -86,7 +86,7 @@ public class Chambre {
     }
 
     /**
-     * Définit la valeur de la propriété nbLits.
+     * DÃ©finit la valeur de la propriÃ©tÃ© nbLits.
      * 
      */
     public void setNbLits(int value) {
@@ -94,7 +94,7 @@ public class Chambre {
     }
 
     /**
-     * Obtient la valeur de la propriété prix.
+     * Obtient la valeur de la propriÃ©tÃ© prix.
      * 
      */
     public int getPrix() {
@@ -102,7 +102,7 @@ public class Chambre {
     }
 
     /**
-     * Définit la valeur de la propriété prix.
+     * DÃ©finit la valeur de la propriÃ©tÃ© prix.
      * 
      */
     public void setPrix(int value) {
@@ -110,7 +110,7 @@ public class Chambre {
     }
 
     /**
-     * Obtient la valeur de la propriété typeChambre.
+     * Obtient la valeur de la propriÃ©tÃ© typeChambre.
      * 
      * @return
      *     possible object is
@@ -122,7 +122,7 @@ public class Chambre {
     }
 
     /**
-     * Définit la valeur de la propriété typeChambre.
+     * DÃ©finit la valeur de la propriÃ©tÃ© typeChambre.
      * 
      * @param value
      *     allowed object is
