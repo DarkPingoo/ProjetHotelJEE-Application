@@ -12,6 +12,24 @@ body{
     min-height: calc(100vh - 20px);
 }
 
+.reservation{
+	border-radius: 10px;
+	color: #A9A9A9!important;
+	padding: 10px;
+}
+
+h2{
+	color:#ffc107	
+}
+
+.images_size {
+width:500px;
+height:500px;
+}
+
+.card{
+	color: #A9A9A9
+} 
 
 /*
  * Component: Box
