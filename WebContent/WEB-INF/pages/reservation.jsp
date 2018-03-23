@@ -17,14 +17,21 @@
 	<input type="radio" name="sexe" value="Madame" /> Madame 
 	<input type="radio"	name="sexe" value="Monsieur" /> Monsieur <br> <br>
 	
+		<label>Enter votre identifiant </label><br>
+		<div class="input-group mb-2 mr-sm-2">
+    		<div class="input-group-prepend">
+      		<div class="input-group-text"><i class="fa fa-user fa-fw" aria-hidden="true"></i></div>
+		    </div>
+		    <input type="text" name="idHotel" placeholder="Identifiant" class="form-control"/><br>
+		  </div><br>
 		<label>Enter votre nom </label><br>
 		<input type="text" name="nom" placeholder="Nom" class="form-control"/><br>
 		<label>Enter votre prénom </label><br>
 		<input type="text" name="prenom" placeholder="Prénom" class="form-control"/><br>
 		<label>Enter votre numéro de téléphone </label><br>
 		<div class="input-group mb-2 mr-sm-2">
-    <div class="input-group-prepend">
-      <div class="input-group-text"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></div>
+    		<div class="input-group-prepend">
+      		<div class="input-group-text"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></div>
     </div>
     <input type="text" name="telephone" placeholder="Numéro de téléphone" class="form-control"/><br>
   </div><br>
@@ -40,6 +47,9 @@
 		</c:forEach>
 	</select>
 	<br><br>
+	<label>Nombre de personnes </label><br>
+		<input type="text" name="nbPers" class="form-control"/><br>
+	
 	<div class = "col-sm-12 text-right">
 	<button type="submit" name = "Envoyer" class="btn btn-light">Envoyer</button>
 	</div>
