@@ -19,7 +19,7 @@
     <div class="carousel-item active">
     	<div class="card bg-dark">
 		  <div class="card-body">
-		    <h5 class="card-title">La Suite Royale</h5>
+		    <h5 class="card-title"> <i class="fab fa-fort-awesome fa-fw" aria-hidden="true"></i> La Suite Royale </h5>
 		    <p class="card-text">Description</p>
 		  </div>
 		  <img class="d-block w-100 images_size card-img-bottom" src="img/SuiteRoyale.jpg" alt="First slide Card image cap">
@@ -28,7 +28,7 @@
     <div class="carousel-item">
 	    <div class="card bg-dark">
 		  <div class="card-body">
-		    <h5 class="card-title">La Chambre d'Affaire</h5>
+		    <h5 class="card-title"><i class="fa fa-briefcase fa-fw" aria-hidden="true"></i> La Chambre d'Affaire </h5>
 		    <p class="card-text">Description</p>
 		  </div>
 		  <img class="d-block w-100 images_size card-img-bottom" src="img/ChambreDAffaire.jpg" alt="Second slide Card image cap">
@@ -37,7 +37,7 @@
     <div class="carousel-item">
     	<div class="card bg-dark">
 		  <div class="card-body">
-		    <h5 class="card-title">La Chambre Familiale</h5>
+		    <h5 class="card-title"> <i class="fa fa-users fa-fw" aria-hidden="true"></i> La Chambre Familiale </h5>
 		    <p class="card-text">Description</p>
 		  </div>
 		  <img class="d-block w-100 images_size card-img-bottom" src="img/ChambreFamiliale.jpg" alt="Third slide Card image cap">
@@ -46,7 +46,7 @@
     <div class="carousel-item">
     <div class="card bg-dark">
 		  <div class="card-body">
-		    <h5 class="card-title">Le taudis</h5>
+		    <h5 class="card-title"> <i class="fa fa-dollar-sign fa-fw" aria-hidden="true"></i> Le taudis </h5>
 		    <p class="card-text">Description</p>
 		  </div>
 		  <img class="d-block w-100 images_size card-img-bottom" src="img/Taudis.jpg" alt="Fourth slide Card image cap">
