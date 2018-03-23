@@ -62,17 +62,18 @@
 <div class="row" style="margin: 20px;">
     <%-- Callback : message de retour --%>
     <c:if test="${ not empty requestScope.callbackMessage }">
-        <!-- TODO : CENTRER -->
-        <div class="row justify-content-center">
-            <div class="box-container">
-                <div class="alert alert-${ requestScope.callbackType } alert-dismissible fade show" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <stong>
-                        <i class="fa fa-${ requestScope.callbackIcon } fa-fw text-${ requestScope.callbackType }" aria-hidden="true"></i>&nbsp;
-                    </stong>
-                        ${ requestScope.callbackMessage }
+        <div class="col-sm-12 no-padding">
+            <div class="row justify-content-center">
+                <div class="box-container">
+                    <div class="alert alert-${ requestScope.callbackType } alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <stong>
+                            <i class="fa fa-${ requestScope.callbackIcon } fa-fw text-${ requestScope.callbackType }" aria-hidden="true"></i>&nbsp;
+                        </stong>
+                            ${ requestScope.callbackMessage }
+                    </div>
                 </div>
             </div>
         </div>

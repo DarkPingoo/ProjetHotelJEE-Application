@@ -10,7 +10,7 @@
 
   <div class="row justify-content-center ">
   
-    <div class="col-5 reservation bg-dark">
+    <div class="box-container reservation bg-dark">
     <h2 class = "text-center">Formulaire de réservation</h2><br>
     
 <form method="post" action="reservation">
