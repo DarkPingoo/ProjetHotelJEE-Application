@@ -29,7 +29,15 @@ height:500px;
 
 .card{
 	color: #A9A9A9
-} 
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.box-container {
+    width: 600px;
+}
 
 /*
  * Component: Box

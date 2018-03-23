@@ -21,6 +21,16 @@
 </head>
 <body>
 
+<!-- TODO : Retirer DEBUGGER -->
+<div style="position: absolute; right:0;top:0;background-color:rgba(255,0,0,0.5);color:#fff;z-index:1000">
+    FENETRE<br />
+    <span class="d-none d-xl-block d-lg-none">XL</span>
+    <span class="d-none d-lg-block d-xl-none">LG</span>
+    <span class="d-none d-md-block d-lg-none">MD</span>
+    <span class="d-none d-sm-block d-md-none">SM</span>
+    <span class="d-block d-sm-none">XS</span>
+</div>
+<!-- ./ DEBUGGER -->
 <div class="row">
     <%-- Navbar : Liste des pages accessibles --%>
     <div class="col-sm-12">
@@ -52,19 +62,21 @@
 <div class="row" style="margin: 20px;">
     <%-- Callback : message de retour --%>
     <c:if test="${ not empty requestScope.callbackMessage }">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10">
-            <div class="alert alert-${ requestScope.callbackType } alert-dismissible fade show" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <stong>
-                    <i class="fa fa-${ requestScope.callbackIcon } fa-fw text-${ requestScope.callbackType }" aria-hidden="true"></i>&nbsp;
-                </stong>
-                ${ requestScope.callbackMessage }
+        <div class="col-sm-12 no-padding">
+            <div class="row justify-content-center">
+                <div class="box-container">
+                    <div class="alert alert-${ requestScope.callbackType } alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <stong>
+                            <i class="fa fa-${ requestScope.callbackIcon } fa-fw text-${ requestScope.callbackType }" aria-hidden="true"></i>&nbsp;
+                        </stong>
+                            ${ requestScope.callbackMessage }
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-sm-1"></div>
     </c:if>
 
     <%-- Contenu de la page --%>
@@ -79,6 +91,8 @@
 <!-- Bootstrap & JQuery -->
 <script type="application/javascript" src="<c:url value="/js/jquery.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/js/bootstrap.js"/>"></script>
+<script type="application/javascript" src="<c:url value="/js/inputmask.js"/>"></script>
+<script type="application/javascript" src="<c:url value="/js/jquery.inputmask.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/js/script.js"/>"></script>
 </body>
 </html>
