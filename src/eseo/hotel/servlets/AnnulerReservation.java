@@ -16,13 +16,13 @@ import java.text.ParseException;
  * Servlet implementation class reservationServlet
  */
 @WebServlet("/annulerReservation")
-public class annulerReservation extends HttpServlet {
+public class AnnulerReservation extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public annulerReservation() {
+    public AnnulerReservation() {
         super();
     }
 
@@ -30,7 +30,7 @@ public class annulerReservation extends HttpServlet {
      * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //Redirection vers la Servlet de gestion des reservation
+        //Redirection vers la Servlet de gestion des Reservation
         request.getRequestDispatcher("/gererReservation").forward(request, response);
     }
 
@@ -50,7 +50,7 @@ public class annulerReservation extends HttpServlet {
 
         //Si les paramètres sont valides
         if(idReservation != null) {
-            //APPEL DU WEBSERVICE - Annulation reservation
+            //APPEL DU WEBSERVICE - Annulation Reservation
             GestionHotelsSEI service    = new GestionHotelsService().getGestionHotelsPort();
 
             if(service.annulerChambre(idReservation)) {

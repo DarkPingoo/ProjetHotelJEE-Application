@@ -12,23 +12,28 @@ import java.io.IOException;
 /**
  * Servlet implementation class reservationServlet
  */
-@WebServlet("/accueil")
-public class accueil extends HttpServlet {
+@WebServlet("/gererReservation")
+public class GererReservation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public accueil() {
-        super();
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public GererReservation() {
+		super();
+	}
 
 	/**
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Forward vers la page de template
-		TemplateUtil.showPage(request, response, "accueil.jsp", "HotelPremium");
+		TemplateUtil.showPage(request, response, "gererReservation.jsp", "Gérer une réservation");
 	}
 
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
 }

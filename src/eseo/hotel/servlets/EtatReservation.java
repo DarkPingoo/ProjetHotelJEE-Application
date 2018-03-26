@@ -15,13 +15,13 @@ import java.io.IOException;
  * Servlet implementation class reservationServlet
  */
 @WebServlet("/etatReservation")
-public class etatReservation extends HttpServlet {
+public class EtatReservation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public etatReservation() {
+	public EtatReservation() {
 		super();
 	}
 
@@ -29,7 +29,7 @@ public class etatReservation extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//Redirection vers la Servlet de gestion des reservation
+		//Redirection vers la Servlet de gestion des Reservation
 		request.getRequestDispatcher("/gererReservation").forward(request, response);
 	}
 
