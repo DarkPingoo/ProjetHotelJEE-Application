@@ -95,35 +95,63 @@ public class reservation extends HttpServlet {
 		GestionHotelsSEI service = new GestionHotelsService().getGestionHotelsPort();
 		
 		// TODO Chambre
-		int idChambre = 1;
+		int idChambre = 0;
+		if (chambre =="Suite Royale") {
+			idChambre = 2;
+		}else if(chambre =="Chambre d'Affaire") {
+			idChambre = 3;
+		}else if(chambre =="Chambre Familiale") {
+			idChambre = 4;
+		}else if(chambre == "Taudis") {
+			idChambre = 1;
+		}
+		
 		
 		ReservationChambre reservation = new ReservationChambre();
-		if(identifiant != null) {
-			reservation.setIdClient(Integer.parseInt(identifiant));	
-		}
-		//TODO : trouverChambre --> idChambre
-		reservation.setIdChambre(idChambre);
-		if(arrivee != null) {
-			reservation.setDateDebut(dateD);
-		}
-		if(depart != null) {
-			reservation.setDateFin(dateF);
-		}
-		if(nbPers != null) {
-			reservation.setNbPlaces(Integer.parseInt(nbPers));
-		}
-		
 		String callbackType;
 		String callbackMessage;
-		if(service.reserverChambre(reservation) > 0) {
-			callbackType 	= "success";
-            callbackMessage = "La réservation pour " + chambre + " du " + arrivee + " au " + depart +
-            		" a bien été effectuée " + sexe + " " + prenom + " " + nom + ".";
+		
+		if(identifiant != null) {
+			reservation.setIdClient(Integer.parseInt(identifiant));	
+			reservation.setIdChambre(idChambre);
+			if(arrivee != null) {
+				reservation.setDateDebut(dateD);
+				if(depart != null && dateF.getDay() > dateD.getDay()) {
+					reservation.setDateFin(dateF);
+					if(nbPers != null) {
+						reservation.setNbPlaces(Integer.parseInt(nbPers));
+						if(service.reserverChambre(reservation) != -1) {
+							callbackType 	= "success";
+				            callbackMessage = "La réservation pour " + chambre + " du " + arrivee + " au " + depart +
+				            		" a bien été effectuée " + sexe + " " + prenom + " " + nom + ".";
+						}else {
+							callbackType 	= "danger";
+				            callbackMessage = "La réservation pour " + chambre + " du " + arrivee + " au " + depart +
+				            		" n'a pas pu être effectuée " + sexe + " " + prenom + " " + nom + ".";
+						}
+					}else {
+						callbackType 	= "danger";
+			            callbackMessage = "Combien serez vous ?";
+					}
+				}else {
+					callbackType 	= "danger";
+		            callbackMessage = "A quelle date repartez-vous ?";
+				}
+			}else {
+				callbackType 	= "danger";
+	            callbackMessage = "A quelle date arrivez-vous ?";
+			}
 		}else {
 			callbackType 	= "danger";
-            callbackMessage = "La réservation pour " + chambre + " du " + arrivee + " au " + depart +
-            		" n'a pas pu être effectuée " + sexe + " " + prenom + " " + nom + ".";
+            callbackMessage = "Quel est votre identifiant ?";
 		}
+		
+		
+		
+		
+		
+		
+		
 
 		TemplateUtil.setCallback(request, response, "success", "Votre réservation à bien été prise en compte " 
 				+ sexe + " " + prenom + " " + nom + ".");
