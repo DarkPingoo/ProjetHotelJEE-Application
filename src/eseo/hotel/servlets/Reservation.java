@@ -21,16 +21,16 @@ import eseo.hotel.clientws.ReservationChambre;
 import eseo.hotel.utils.TemplateUtil;
 
 /**
- * Servlet implementation class reservation
+ * Servlet implementation class Reservation
  */
 @WebServlet("/reservation")
-public class reservation extends HttpServlet {
+public class Reservation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public reservation() {
+	public Reservation() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

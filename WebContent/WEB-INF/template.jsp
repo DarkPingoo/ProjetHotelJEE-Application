@@ -39,17 +39,17 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item<c:if test="${requestScope.servletPath == '/accueil'}"> active</c:if>">
+                    <li class="nav-item<c:if test="${requestScope.servletPath == '/Accueil'}"> active</c:if>">
                         <a class="nav-link" href="<c:url value="/accueil"/>">
                             <i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp;Accueil
                         </a>
                     </li>
-                    <li class="nav-item<c:if test="${requestScope.servletPath == '/reservation'}"> active</c:if>">
+                    <li class="nav-item<c:if test="${requestScope.servletPath == '/Reservation'}"> active</c:if>">
                         <a class="nav-link" href="<c:url value="/reservation"/>">
                             <i class="fa fa-star fa-fw" aria-hidden="true"></i>&nbsp;Effectuer une réservation
                         </a>
                     </li>
-                    <li class="nav-item<c:if test="${requestScope.servletPath == '/gererReservation'}"> active</c:if>">
+                    <li class="nav-item<c:if test="${requestScope.servletPath == '/GererReservation'}"> active</c:if>">
                         <a class="nav-link" href="<c:url value="/gererReservation"/>">
                             <i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp;Gérer une réservation</a>
                     </li>
