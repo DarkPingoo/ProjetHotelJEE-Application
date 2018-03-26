@@ -53,6 +53,9 @@ public final class GestionHotelsSEI_GestionHotelsPort_Client {
             }
         }
 
+
+
+
         GestionHotelsService ss = new GestionHotelsService(wsdlURL, SERVICE_NAME);
         GestionHotelsSEI port = ss.getGestionHotelsPort();
 
