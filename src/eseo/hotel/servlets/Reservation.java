@@ -147,14 +147,7 @@ public class Reservation extends HttpServlet {
 		}
 		
 		
-		
-		
-		
-		
-		
-
-		TemplateUtil.setCallback(request, response, "success", "Votre réservation à bien été prise en compte " 
-				+ sexe + " " + prenom + " " + nom + ".");
+		TemplateUtil.setCallback(request, response, callbackType, callbackMessage);
 
 		doGet(request, response);
 	}
