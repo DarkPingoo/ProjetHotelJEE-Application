@@ -16,7 +16,7 @@ import javax.xml.ws.WebServiceFeature;
  */
 @WebServiceClient(name = "GestionHotelsService", 
                   wsdlLocation = "http://192.168.4.78:8085/services/GestionHotelsPort?wsdl",
-                  targetNamespace = "http://sw.eseo/") 
+                  targetNamespace = "http://sw.eseo/")
 public class GestionHotelsService extends Service {
 
     public final static URL WSDL_LOCATION;
@@ -33,7 +33,7 @@ public class GestionHotelsService extends Service {
         } catch (Exception e) {
             java.util.logging.Logger.getLogger(GestionHotelsService.class.getName())
                 .log(java.util.logging.Level.INFO, 
-                     "Can not initialize the default wsdl from {0}", "classpath:wsdl/gestionhotels.wsdl");
+                     "Can not initialize the default wsdl from {0}", "wsdl/gestionhotels.wsdl");
         }
         WSDL_LOCATION = url;
     }
