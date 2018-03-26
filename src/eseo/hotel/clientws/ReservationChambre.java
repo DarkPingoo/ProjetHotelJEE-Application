@@ -11,7 +11,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 /**
  * <p>Classe Java pour reservationChambre complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="reservationChambre">
@@ -56,7 +56,7 @@ public class ReservationChambre {
     protected boolean paiementEffectue;
 
     /**
-     * Obtient la valeur de la propriété dateDebut.
+     * Obtient la valeur de la propriÃ©tÃ© dateDebut.
      * 
      * @return
      *     possible object is
@@ -68,7 +68,7 @@ public class ReservationChambre {
     }
 
     /**
-     * Définit la valeur de la propriété dateDebut.
+     * DÃ©finit la valeur de la propriÃ©tÃ© dateDebut.
      * 
      * @param value
      *     allowed object is
@@ -80,7 +80,7 @@ public class ReservationChambre {
     }
 
     /**
-     * Obtient la valeur de la propriété dateFin.
+     * Obtient la valeur de la propriÃ©tÃ© dateFin.
      * 
      * @return
      *     possible object is
@@ -92,7 +92,7 @@ public class ReservationChambre {
     }
 
     /**
-     * Définit la valeur de la propriété dateFin.
+     * DÃ©finit la valeur de la propriÃ©tÃ© dateFin.
      * 
      * @param value
      *     allowed object is
@@ -104,7 +104,7 @@ public class ReservationChambre {
     }
 
     /**
-     * Obtient la valeur de la propriété idChambre.
+     * Obtient la valeur de la propriÃ©tÃ© idChambre.
      * 
      */
     public int getIdChambre() {
@@ -112,7 +112,7 @@ public class ReservationChambre {
     }
 
     /**
-     * Définit la valeur de la propriété idChambre.
+     * DÃ©finit la valeur de la propriÃ©tÃ© idChambre.
      * 
      */
     public void setIdChambre(int value) {
@@ -120,7 +120,7 @@ public class ReservationChambre {
     }
 
     /**
-     * Obtient la valeur de la propriété idClient.
+     * Obtient la valeur de la propriÃ©tÃ© idClient.
      * 
      */
     public int getIdClient() {
@@ -128,7 +128,7 @@ public class ReservationChambre {
     }
 
     /**
-     * Définit la valeur de la propriété idClient.
+     * DÃ©finit la valeur de la propriÃ©tÃ© idClient.
      * 
      */
     public void setIdClient(int value) {
@@ -136,7 +136,7 @@ public class ReservationChambre {
     }
 
     /**
-     * Obtient la valeur de la propriété idReservation.
+     * Obtient la valeur de la propriÃ©tÃ© idReservation.
      * 
      */
     public int getIdReservation() {
@@ -144,7 +144,7 @@ public class ReservationChambre {
     }
 
     /**
-     * Définit la valeur de la propriété idReservation.
+     * DÃ©finit la valeur de la propriÃ©tÃ© idReservation.
      * 
      */
     public void setIdReservation(int value) {
@@ -152,7 +152,7 @@ public class ReservationChambre {
     }
 
     /**
-     * Obtient la valeur de la propriété nbPlaces.
+     * Obtient la valeur de la propriÃ©tÃ© nbPlaces.
      * 
      */
     public int getNbPlaces() {
@@ -160,7 +160,7 @@ public class ReservationChambre {
     }
 
     /**
-     * Définit la valeur de la propriété nbPlaces.
+     * DÃ©finit la valeur de la propriÃ©tÃ© nbPlaces.
      * 
      */
     public void setNbPlaces(int value) {
@@ -168,7 +168,7 @@ public class ReservationChambre {
     }
 
     /**
-     * Obtient la valeur de la propriété paiementEffectue.
+     * Obtient la valeur de la propriÃ©tÃ© paiementEffectue.
      * 
      */
     public boolean isPaiementEffectue() {
@@ -176,7 +176,7 @@ public class ReservationChambre {
     }
 
     /**
-     * Définit la valeur de la propriété paiementEffectue.
+     * DÃ©finit la valeur de la propriÃ©tÃ© paiementEffectue.
      * 
      */
     public void setPaiementEffectue(boolean value) {
