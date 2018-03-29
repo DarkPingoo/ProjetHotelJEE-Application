@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://servlet.parkingbooking.eseo.fr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="RequetesBDDService" targetNamespace="http://servlet.parkingbooking.eseo.fr/">
+  <wsdl:types>
+<schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://servlet.parkingbooking.eseo.fr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://www.w3.org/2001/XMLSchema">
+  
+  <import namespace="http://servlet.parkingbooking.eseo.fr/" schemaLocation="http://192.168.4.105:8085/ParkingBookingLocal/services/RequetesBDDPort?xsd=requetesbdd_schema1.xsd"/>
+
+</schema>
+  </wsdl:types>
+  <wsdl:message name="trouverParkingResponse">
+    <wsdl:part element="tns:trouverParkingResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="reserverParkingResponse">
+    <wsdl:part element="tns:reserverParkingResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="annulerReservationParkingResponse">
+    <wsdl:part element="tns:annulerReservationParkingResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="payerParking">
+    <wsdl:part element="tns:payerParking" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="trouverParking">
+    <wsdl:part element="tns:trouverParking" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="reserverParking">
+    <wsdl:part element="tns:reserverParking" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="payerParkingResponse">
+    <wsdl:part element="tns:payerParkingResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="annulerReservationParking">
+    <wsdl:part element="tns:annulerReservationParking" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="RequetesBDDSEI">
+    <wsdl:operation name="reserverParking">
+      <wsdl:input message="tns:reserverParking" name="reserverParking">
+    </wsdl:input>
+      <wsdl:output message="tns:reserverParkingResponse" name="reserverParkingResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="payerParking">
+      <wsdl:input message="tns:payerParking" name="payerParking">
+    </wsdl:input>
+      <wsdl:output message="tns:payerParkingResponse" name="payerParkingResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="annulerReservationParking">
+      <wsdl:input message="tns:annulerReservationParking" name="annulerReservationParking">
+    </wsdl:input>
+      <wsdl:output message="tns:annulerReservationParkingResponse" name="annulerReservationParkingResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="trouverParking">
+      <wsdl:input message="tns:trouverParking" name="trouverParking">
+    </wsdl:input>
+      <wsdl:output message="tns:trouverParkingResponse" name="trouverParkingResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RequetesBDDServiceSoapBinding" type="tns:RequetesBDDSEI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="reserverParking">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="reserverParking">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="reserverParkingResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="payerParking">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="payerParking">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="payerParkingResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="annulerReservationParking">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="annulerReservationParking">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="annulerReservationParkingResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="trouverParking">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="trouverParking">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="trouverParkingResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RequetesBDDService">
+    <wsdl:port binding="tns:RequetesBDDServiceSoapBinding" name="RequetesBDDPort">
+      <soap:address location="http://192.168.4.105:8085/ParkingBookingLocal/services/RequetesBDDPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
