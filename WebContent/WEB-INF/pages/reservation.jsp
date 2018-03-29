@@ -15,8 +15,8 @@
 
 		<%--Formulaire reservation de chambre --%>
 		<form method="post" action="reservation">
-			<input type="radio" name="sexe" value="Madame" required="" <c:if test="${param.sexe eq 'Madame'}">checked="checked"</c:if>/> Madame
-			<input type="radio"	name="sexe" value="Monsieur" required="" <c:if test="${param.sexe eq 'Monsieur'}">checked="checked"</c:if>/> Monsieur <br> <br>
+			<input type="radio" name="sexe" value="Madame" required="" <c:if test="${requestScope.sexe eq 'Madame'}">checked="checked"</c:if>/> Madame
+			<input type="radio"	name="sexe" value="Monsieur" required="" <c:if test="${requestScope.sexe eq 'Monsieur'}">checked="checked"</c:if>/> Monsieur <br> <br>
 
 			<label>Entrer votre identifiant </label><br>
 			<div class="input-group mb-2 mr-sm-2">
@@ -25,24 +25,24 @@
 				</div>
 				<input type="text" name="idHotel" placeholder="Identifiant" class="form-control"
 					   data-inputmask="'mask': '9', 'repeat': '5', 'greedy' : 'false'" required=""
-					   value="${ param.idHotel }"/><br>
+					   value="${ requestScope.idHotel }"/><br>
 			</div><br>
 			<label>Entrer votre nom </label><br>
-			<input type="text" name="nom" placeholder="Nom" class="form-control" required="" value="${ param.nom }"/><br>
+			<input type="text" name="nom" placeholder="Nom" class="form-control" required="" value="${ requestScope.nom }"/><br>
 			<label>Entrer votre prénom </label><br>
-			<input type="text" name="prenom" placeholder="Prénom" class="form-control" required="" value="${ param.prenom }"/><br>
+			<input type="text" name="prenom" placeholder="Prénom" class="form-control" required="" value="${ requestScope.prenom }"/><br>
 			<label>Entrer votre numéro de téléphone </label><br>
 			<div class="input-group mb-2 mr-sm-2">
 				<div class="input-group-prepend">
 					<div class="input-group-text"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></div>
 				</div>
 				<input type="text" name="telephone" placeholder="Numéro de téléphone" class="form-control"
-					   data-inputmask="'mask': '99 99 99 99 99'" value="${ param.telephone }"/><br>
+					   data-inputmask="'mask': '99 99 99 99 99'" value="${ requestScope.telephone }"/><br>
 			</div><br>
 
 
-			Du <input type="date" name="dateArrivee" required="" value="${ param.dateArrivee }"/>
-			au <input type="date" name="dateDepart" required="" value="${ param.dateDepart }"/><br><br>
+			Du <input type="date" name="dateArrivee" required="" value="${ requestScope.dateArrivee }"/>
+			au <input type="date" name="dateDepart" required="" value="${ requestScope.dateDepart }"/><br><br>
 
 			<label>Type de chambre </label><br>
 			<select name = "chambre">
@@ -53,7 +53,13 @@
 			<br><br>
 			<label>Nombre de personnes </label><br>
 			<input type="text" name="nbPers" class="form-control" required=""
-				   data-inputmask="'mask': '9', 'repeat': '5', 'greedy' : 'false'" value="${ param.nbPers }"/><br>
+				   data-inputmask="'mask': '9', 'repeat': '5', 'greedy' : 'false'" value="${ requestScope.nbPers }"/><br>
+
+			<div class="col-sm-12 no-padding">
+				<label>Souhaitez-vous réserver une place de parking ? </label>
+				<input type="radio" name="parking" value="oui" required="" <c:if test="${requestScope.parking eq 'oui'}">checked="checked"</c:if>/> Oui
+				<input type="radio" name="parking" value="non" required="" <c:if test="${requestScope.parking eq 'non'}">checked="checked"</c:if>/> Non
+			</div>
 
 			<div class = "col-sm-12 text-right">
 				<button type="submit" name = "Envoyer" class="btn btn-light">Envoyer</button>

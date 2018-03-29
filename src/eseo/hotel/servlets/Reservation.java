@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeConstants;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -21,6 +22,9 @@ import eseo.hotel.clientws.GestionHotelsSEI;
 import eseo.hotel.clientws.GestionHotelsService;
 import eseo.hotel.clientws.ReservationChambre;
 import eseo.hotel.utils.TemplateUtil;
+import eseo.parking.clientws.RequetesBDDService;
+
+//TODO : Faire des tests (web & ws)
 
 /**
  * Servlet implementation class Reservation
@@ -34,7 +38,6 @@ public class Reservation extends HttpServlet {
      */
     public Reservation() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**
@@ -68,6 +71,7 @@ public class Reservation extends HttpServlet {
         String depart = request.getParameter("dateDepart");
         String typeChambre = request.getParameter("chambre");
         String nbPers = request.getParameter("nbPers");
+        boolean reserverParking = request.getParameter("parking").equalsIgnoreCase("oui");
 
         //GregorianCalendar
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -78,7 +82,6 @@ public class Reservation extends HttpServlet {
             cd.setTime(sdf.parse(arrivee));
             cf.setTime(sdf.parse(depart));
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -88,7 +91,6 @@ public class Reservation extends HttpServlet {
             dateD = DatatypeFactory.newInstance().newXMLGregorianCalendar(cd);
             dateF = DatatypeFactory.newInstance().newXMLGregorianCalendar(cf);
         } catch (DatatypeConfigurationException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -105,7 +107,6 @@ public class Reservation extends HttpServlet {
             e.printStackTrace();
         }
 
-        //TODO : Ajouter le bouton : Souhaitez vous reserver une place de parking, et si oui effectuer la réservation
         if(service != null) {
             Chambre chambre = new Chambre();
             chambre.setNbLits(Integer.parseInt(nbPers));
@@ -121,20 +122,49 @@ public class Reservation extends HttpServlet {
                     reservation.setIdChambre(chambre.getIdChambre());
                     if(arrivee != null) {
                         reservation.setDateDebut(dateD);
-                        if(depart != null && dateF.getDay() > dateD.getDay()) {
+                        if(depart != null && dateF.compare(dateD) == DatatypeConstants.GREATER) {
                             reservation.setDateFin(dateF);
                             if(nbPers != null) {
                                 reservation.setNbPlaces(Integer.parseInt(nbPers));
                                 try {
-                                    if(service.reserverChambre(reservation) != -1) {
+                                    int codeRetour = service.reserverChambre(reservation);
+                                    if(codeRetour > 0) {
                                         callbackType 	= "success";
-                                        callbackMessage = "La réservation pour " + chambre + " du " + arrivee + " au " + depart +
+                                        callbackMessage = "La réservation pour " + chambre.getTypeChambre() + " du " + arrivee + " au " + depart +
                                                 " a bien été effectuée " + sexe + " " + prenom + " " + nom + ". ";
-                                        callbackMessage += "Pensez à régler votre réservation qui est d'un montant de " + chambre.getPrix() + "€";
+                                        callbackMessage += "\nPensez à régler votre réservation qui est d'un montant de " + chambre.getPrix() + "€";
+                                        callbackMessage += "\nVotre réservation porte l'identifiant n°" + codeRetour;
+
+                                        //Réservation du parking - Utilisation d'un WS externe
+                                        if(reserverParking) {
+                                            eseo.parking.clientws.Reservation parking = new eseo.parking.clientws.Reservation();
+                                            parking.setCodeClient(Integer.parseInt(identifiant));
+                                            parking.setCodeParking(1);
+                                            parking.setDateDebut(dateD);
+                                            parking.setDateFin(dateF);
+                                            parking.setPaiementEffectue(true);
+
+                                            new RequetesBDDService().getRequetesBDDPort().reserverParking(parking);
+                                        }
                                     }else {
                                         callbackType 	= "danger";
-                                        callbackMessage = "La réservation pour " + chambre + " du " + arrivee + " au " + depart +
-                                                " n'a pas pu être effectuée " + sexe + " " + prenom + " " + nom + ".";
+
+                                        //Affichage du message en fonction du code d'erreur
+                                        /*
+                                         * -1 : Incohérence de date
+                                         * -2 : Chambre inexistante
+                                         * -3 : Chambre déjà réservée
+                                         */
+                                        if(codeRetour == -1) {
+                                            callbackMessage = "Merci de vérifier vos date de réservation";
+                                        } else if (codeRetour == -2) {
+                                            callbackMessage = "Désolé, nous ne possédons plus de chambre " + chambre.getTypeChambre();
+                                        } else if (codeRetour == -3) {
+                                            callbackMessage = "Désolé, la chambre " + chambre.getTypeChambre() + " est déjà réservée pour la période " +
+                                                    "du " + getDateFormatee(reservation.getDateDebut()) + " au " + getDateFormatee(reservation.getDateFin());
+                                        } else {
+                                            callbackMessage = "Problème interne, impossible de réserver la chambre";
+                                        }
                                     }
                                 } catch(Exception e) {
                                     callbackType        = "warning";
@@ -166,15 +196,27 @@ public class Reservation extends HttpServlet {
         }
 
 
-        //Si la requête reussit
-        if(callbackType.equalsIgnoreCase("success")) {
-            //On efface les paramètres
-            request.getParameterMap().clear();
+        //Si la requête ne reussit pas on remet les parametres dans les inputs
+        if(!callbackType.equalsIgnoreCase("success")) {
+            request.setAttribute("sexe", request.getParameter("sexe"));
+            request.setAttribute("nom", request.getParameter("nom"));
+            request.setAttribute("prenom", request.getParameter("prenom"));
+            request.setAttribute("idHotel", request.getParameter("idHotel"));
+            request.setAttribute("telephone", request.getParameter("telephone"));
+            request.setAttribute("dateArrivee", request.getParameter("dateArrivee"));
+            request.setAttribute("dateDepart", request.getParameter("dateDepart"));
+            request.setAttribute("chambre", request.getParameter("chambre"));
+            request.setAttribute("nbPers", request.getParameter("nbPers"));
         }
 
         TemplateUtil.setCallback(request, response, callbackType, callbackMessage);
 
         doGet(request, response);
+    }
+
+
+    public String getDateFormatee(XMLGregorianCalendar date) {
+        return date.getDay() + "/" + date.getMonth() + "/" + date.getYear();
     }
 
 }
