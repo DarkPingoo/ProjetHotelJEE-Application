@@ -21,16 +21,6 @@
 </head>
 <body>
 
-<!-- TODO : Retirer DEBUGGER -->
-<div style="position: absolute; right:0;top:0;background-color:rgba(255,0,0,0.5);color:#fff;z-index:1000">
-    FENETRE<br />
-    <span class="d-none d-xl-block d-lg-none">XL</span>
-    <span class="d-none d-lg-block d-xl-none">LG</span>
-    <span class="d-none d-md-block d-lg-none">MD</span>
-    <span class="d-none d-sm-block d-md-none">SM</span>
-    <span class="d-block d-sm-none">XS</span>
-</div>
-<!-- ./ DEBUGGER -->
 <div class="row">
     <%-- Navbar : Liste des pages accessibles --%>
     <div class="col-sm-12">

@@ -25,24 +25,24 @@
 				</div>
 				<input type="text" name="idHotel" placeholder="Identifiant" class="form-control"
 					   data-inputmask="'mask': '9', 'repeat': '5', 'greedy' : 'false'" required=""
-					   value="${ requestScope.idHotel }"/><br>
+					   value="${ param.idHotel }"/><br>
 			</div><br>
 			<label>Entrer votre nom </label><br>
-			<input type="text" name="nom" placeholder="Nom" class="form-control" required="" value="${ requestScope.nom }"/><br>
+			<input type="text" name="nom" placeholder="Nom" class="form-control" required="" value="${ param.nom }"/><br>
 			<label>Entrer votre prénom </label><br>
-			<input type="text" name="prenom" placeholder="Prénom" class="form-control" required="" value="${ requestScope.prenom }"/><br>
+			<input type="text" name="prenom" placeholder="Prénom" class="form-control" required="" value="${ param.prenom }"/><br>
 			<label>Entrer votre numéro de téléphone </label><br>
 			<div class="input-group mb-2 mr-sm-2">
 				<div class="input-group-prepend">
 					<div class="input-group-text"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></div>
 				</div>
 				<input type="text" name="telephone" placeholder="Numéro de téléphone" class="form-control"
-					   data-inputmask="'mask': '99 99 99 99 99'" value="${ requestScope.telephone }"/><br>
+					   data-inputmask="'mask': '99 99 99 99 99'" value="${ param.telephone }"/><br>
 			</div><br>
 
 
-			Du <input type="date" name="dateArrivee" required="" value="${ requestScope.dateArrivee }"/>
-			au <input type="date" name="dateDepart" required="" value="${ requestScope.dateDepart }"/><br><br>
+			Du <input type="date" name="dateArrivee" required="" value="${ param.dateArrivee }"/>
+			au <input type="date" name="dateDepart" required="" value="${ param.dateDepart }"/><br><br>
 
 			<label>Type de chambre </label><br>
 			<select name = "chambre">
@@ -53,7 +53,7 @@
 			<br><br>
 			<label>Nombre de personnes </label><br>
 			<input type="text" name="nbPers" class="form-control" required=""
-				   data-inputmask="'mask': '9', 'repeat': '5', 'greedy' : 'false'" value="${ requestScope.nbPers }"/><br>
+				   data-inputmask="'mask': '9', 'repeat': '5', 'greedy' : 'false'" value="${ param.nbPers }"/><br>
 
 			<div class = "col-sm-12 text-right">
 				<button type="submit" name = "Envoyer" class="btn btn-light">Envoyer</button>
