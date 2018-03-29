@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>Classe Java pour payerChambre complex type.
  * 
- * <p>Le fragment de schÃ©ma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="payerChambre">
@@ -34,7 +34,7 @@ public class PayerChambre {
     protected int arg0;
 
     /**
-     * Obtient la valeur de la propriÃ©tÃ© arg0.
+     * Obtient la valeur de la propriété arg0.
      * 
      */
     public int getArg0() {
@@ -42,7 +42,7 @@ public class PayerChambre {
     }
 
     /**
-     * DÃ©finit la valeur de la propriÃ©tÃ© arg0.
+     * Définit la valeur de la propriété arg0.
      * 
      */
     public void setArg0(int value) {

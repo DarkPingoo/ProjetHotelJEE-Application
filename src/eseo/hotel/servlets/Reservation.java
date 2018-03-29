@@ -145,7 +145,14 @@ public class Reservation extends HttpServlet {
 			callbackType 	= "danger";
             callbackMessage = "Quel est votre identifiant ?";
 		}
-		
+
+		//Si la requête reussit
+		if(callbackType.equalsIgnoreCase("success")) {
+		    //On efface les paramètres
+			request.getParameterMap().clear();
+        }
+
+        //TODO - Remettre les params de requete dans le formulaire en valeur par defaut
 		
 		TemplateUtil.setCallback(request, response, callbackType, callbackMessage);
 

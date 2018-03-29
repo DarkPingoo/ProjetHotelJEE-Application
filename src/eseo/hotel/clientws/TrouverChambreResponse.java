@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>Classe Java pour trouverChambreResponse complex type.
  * 
- * <p>Le fragment de schï¿½ma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="trouverChambreResponse">
@@ -54,7 +54,7 @@ public class TrouverChambreResponse {
      * 
      * 
      * <p>
-     * Objects of the following type(RecupererChambre) are allowed in the list
+     * Objects of the following type(s) are allowed in the list
      * {@link Chambre }
      * 
      * 
