@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,13 +17,18 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeConstants;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.ws.BindingProvider;
 
+import com.sun.xml.internal.ws.client.BindingProviderProperties;
 import eseo.hotel.clientws.Chambre;
 import eseo.hotel.clientws.GestionHotelsSEI;
 import eseo.hotel.clientws.GestionHotelsService;
 import eseo.hotel.clientws.ReservationChambre;
 import eseo.hotel.utils.TemplateUtil;
+import eseo.parking.clientws.Parking;
+import eseo.parking.clientws.RequetesBDDSEI;
 import eseo.parking.clientws.RequetesBDDService;
+import eseo.parking.clientws.TypeParking;
 
 //TODO : Faire des tests (web & ws)
 
@@ -129,22 +135,68 @@ public class Reservation extends HttpServlet {
                                 try {
                                     int codeRetour = service.reserverChambre(reservation);
                                     if(codeRetour > 0) {
+                                        //Calcul du prix
+                                        long duree  = Math.abs(dateD.toGregorianCalendar().getTime().getTime() - dateF.toGregorianCalendar().getTime().getTime());
+                                        duree       = duree / (24*60*60*1000);
+                                        int prixTotal = chambre.getPrix() * (int)duree;
+
                                         callbackType 	= "success";
                                         callbackMessage = "La réservation pour " + chambre.getTypeChambre() + " du " + arrivee + " au " + depart +
                                                 " a bien été effectuée " + sexe + " " + prenom + " " + nom + ". ";
-                                        callbackMessage += "\nPensez à régler votre réservation qui est d'un montant de " + chambre.getPrix() + "€";
-                                        callbackMessage += "\nVotre réservation porte l'identifiant n°" + codeRetour;
+                                        callbackMessage += "<br/>Le montant de votre réservation s'élève à <b>" + prixTotal + "€</b>, pensez à payer.";
+                                        callbackMessage += "<br/>Votre réservation porte l'identifiant n°<b>" + codeRetour + "</b>";
 
                                         //Réservation du parking - Utilisation d'un WS externe
                                         if(reserverParking) {
-                                            eseo.parking.clientws.Reservation parking = new eseo.parking.clientws.Reservation();
-                                            parking.setCodeClient(Integer.parseInt(identifiant));
-                                            parking.setCodeParking(1);
-                                            parking.setDateDebut(dateD);
-                                            parking.setDateFin(dateF);
-                                            parking.setPaiementEffectue(true);
+                                            //Le seul parking que l'hotel permet de réserverRequetesBDDSEI serviceP
+                                            TypeParking type = TypeParking.VOITURE;
+                                            Parking parking = new Parking();
+                                            parking.setVille("Angers");
+                                            parking.setType(type);
 
-                                            new RequetesBDDService().getRequetesBDDPort().reserverParking(parking);
+                                            RequetesBDDSEI serviceP = null;
+                                            try {
+                                                serviceP = new RequetesBDDService().getRequetesBDDPort();
+                                                Map<String, Object> requestContext = ((BindingProvider)serviceP).getRequestContext();
+                                                requestContext.put(BindingProviderProperties.REQUEST_TIMEOUT, 5000); // Timeout in millis
+                                                requestContext.put(BindingProviderProperties.CONNECT_TIMEOUT, 5000); // Timeout in millis
+                                            } catch(Exception e) {
+                                                e.printStackTrace();
+                                            }
+
+                                            if(serviceP != null) {
+                                                List<Parking> parkingsDispo = serviceP.trouverParking(parking);
+
+                                                if(parkingsDispo.size() > 0) {
+                                                    eseo.parking.clientws.Reservation parkingR = new eseo.parking.clientws.Reservation();
+                                                    parkingR.setCodeClient(Integer.parseInt(identifiant));
+                                                    parkingR.setCodeParking(1);
+                                                    parkingR.setDateDebut(dateD);
+                                                    parkingR.setDateFin(dateF);
+                                                    parkingR.setPaiementEffectue(true);
+
+                                                    try {
+                                                        int placeParking = serviceP.reserverParking(parkingR);
+                                                        callbackMessage += "<br/>Votre place de parking porte le numéro <b>" + placeParking + "</b>";
+                                                    } catch(Exception e) {
+                                                        callbackMessage += "<span class='text-danger'>";
+                                                        callbackMessage += "<br/>Nous sommes néamoins désolé, il est impossible de réserver une place chez notre partenaire." +
+                                                                " Réservez un parking par vos propres moyens, nous vous rembourseront à hauteur de 10€ par jour";
+                                                        callbackMessage += "</span>";
+                                                    }
+
+                                                } else {
+                                                    callbackMessage += "<span class='text-danger'>";
+                                                    callbackMessage += "<br/>Nous sommes néamoins désolé, toutes les places de parking sont déjà réservées chez notre partenaire." +
+                                                            " Réservez un parking par vos propres moyens, nous vous rembourseront à hauteur de 10€ par jour";
+                                                    callbackMessage += "</span>";
+                                                }
+                                            } else {
+                                                callbackMessage += "<span class='text-danger'>";
+                                                callbackMessage += "<br/>Nous sommes néamoins désolé, il est impossible de contacter le service de notre partenaire." +
+                                                        " Réservez un parking par vos propres moyens, nous vous rembourseront à hauteur de 10€ par jour";
+                                                callbackMessage += "</span>";
+                                            }
                                         }
                                     }else {
                                         callbackType 	= "danger";
@@ -207,6 +259,7 @@ public class Reservation extends HttpServlet {
             request.setAttribute("dateDepart", request.getParameter("dateDepart"));
             request.setAttribute("chambre", request.getParameter("chambre"));
             request.setAttribute("nbPers", request.getParameter("nbPers"));
+            request.setAttribute("parking", request.getParameter("parking"));
         }
 
         TemplateUtil.setCallback(request, response, callbackType, callbackMessage);

@@ -51,8 +51,9 @@ public class EtatReservation extends HttpServlet {
 		if(idReservation != null) {
 			//APPEL DU WEBSERVICE - PayerReservation
 			GestionHotelsSEI service    = new GestionHotelsService().getGestionHotelsPort();
-			boolean erreur              = service.payerChambre(idReservation).equalsIgnoreCase("erreur");
-            boolean dejaPayee           = service.payerChambre(idReservation).equalsIgnoreCase("oui");
+			String retour 				= service.payerChambre(idReservation);
+			boolean erreur              = retour.equalsIgnoreCase("erreur");
+            boolean dejaPayee           = retour.equalsIgnoreCase("non");
 
             if(!erreur) {
                 if(dejaPayee) {
