@@ -53,8 +53,8 @@ public class Reservation extends HttpServlet {
         //Definition des differentes chambres disponibles
         ArrayList <String> chambreList = new ArrayList<String>();
         chambreList.add("Suite Royale");
-        chambreList.add("Chambre d'Affaire");
-        chambreList.add("Chambre Familiale");
+        chambreList.add("Affaire");
+        chambreList.add("Familiale");
         chambreList.add("Taudis");
 
         request.setAttribute("chambreList", chambreList);
